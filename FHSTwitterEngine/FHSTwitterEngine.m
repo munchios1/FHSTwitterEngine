@@ -758,6 +758,18 @@ id removeNull(id rootObject) {
     return [self getTimelineForUser:user isID:isID count:count sinceID:nil maxID:nil];
 }
 
+- (id)getProfileForUser:(NSString *)username isID:(BOOL)isID {
+    
+    if (username.length == 0) {
+        return [NSError badRequestError];
+    }
+    
+    NSURL *baseURL = [NSURL URLWithString:url_users_show];
+    NSMutableDictionary *params = [@{(isID)?@"user_id":@"screen_name":username} mutableCopy];
+    
+    return  [self sendGETRequestForURL:baseURL andParams:params];
+}
+
 - (id)getTimelineForUser:(NSString *)user isID:(BOOL)isID count:(int)count sinceID:(NSString *)sinceID maxID:(NSString *)maxID {
     
     if (count == 0) {

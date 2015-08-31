@@ -215,6 +215,9 @@ extern NSString * const FHSErrorDomain;
 - (id)getTimelineForUser:(NSString *)user isID:(BOOL)isID count:(int)count;
 - (id)getTimelineForUser:(NSString *)user isID:(BOOL)isID count:(int)count sinceID:(NSString *)sinceID maxID:(NSString *)maxID;
 
+// get profile/user
+- (id)getProfileForUser:(NSString *)username isID:(BOOL)isID;
+
 // statuses/retweet
 - (NSError *)retweet:(NSString *)identifier;
 
